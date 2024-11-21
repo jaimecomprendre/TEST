@@ -1,114 +1,167 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f5f5f5;
-            color: #333;
-        }
+  <style>
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      line-height: 1.6;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      background: #f5f5f5;
+    }
 
-        nav {
-            background: white;
-            padding: 1rem;
-            border-radius: 8px;
-            margin-bottom: 2rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
+    .nav {
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      background: white;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      margin-bottom: 2rem;
+    }
 
-        nav a {
-            margin-right: 20px;
-            text-decoration: none;
-            color: #333;
-        }
+    .nav a {
+      margin-right: 2rem;
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+    }
 
-        .hero {
-            text-align: center;
-            padding: 4rem 2rem;
-            background: white;
-            border-radius: 8px;
-            margin-bottom: 2rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
+    .hero {
+      text-align: center;
+      padding: 4rem 0;
+      background: white;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+    }
 
-        .projects {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
 
-        .project-card {
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
+    .project-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      align-items: center;
+    }
 
-        .project-card img, .project-card video {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
+    .project-media {
+      width: 100%;
+      border-radius: 4px;
+      overflow: hidden;
+    }
 
-        .project-info {
-            padding: 1.5rem;
-        }
+    .project-media img,
+    .project-media video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
 
-        footer {
-            text-align: center;
-            padding: 2rem;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-    </style>
+    .project-info {
+      padding: 1rem;
+    }
+
+    .project-info h3 {
+      margin-top: 0;
+      color: #2d3748;
+    }
+
+    .contact {
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      margin-top: 2rem;
+    }
+
+    .contact a {
+      color: #4a5568;
+      text-decoration: none;
+    }
+  </style>
 </head>
 <body>
-    <nav>
-        <a href="#home">Home</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-    </nav>
+  <nav class="nav">
+    <a href="#home">Home</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
-    <section class="hero" id="home">
-        <h1>Your Name</h1>
-        <p>Your professional title or tagline</p>
-    </section>
+  <section id="home" class="hero">
+    <h1>Your Name</h1>
+    <p>Your professional title or tagline</p>
+  </section>
 
-    <section class="projects" id="projects">
-        <!-- Project Card Template -->
-        <div class="project-card">
-            <img src="https://lh3.googleusercontent.com/d/1bZgP3Q3IZtsZ1Jd2AwyH5qa9wzMp6lil" alt="Your image description">
-            <div class="project-info">
-                <h3>Project Title</h3>
-                <p>Project description goes here</p>
-            </div>
-        </div>
+  <section id="projects" class="projects-grid">
+    <div class="project-card">
+      <div class="project-media">
+        <img src="https://i.imgur.com/hCxENDE.jpg" alt="Project 1">
+      </div>
+      <div class="project-info">
+        <h3>Creative Design</h3>
+        <p>A stunning visual exploration showcasing innovative design principles and creative thinking.</p>
+      </div>
+    </div>
 
-        <!-- Video Project Card Template -->
-        <div class="project-card">
-            <video controls>
-                <source src="/path/to/your/video.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <div class="project-info">
-                <h3>Video Project Title</h3>
-                <p>Video project description goes here</p>
-            </div>
-        </div>
-    </section>
+    <div class="project-card">
+      <div class="project-media">
+        <img src="https://i.imgur.com/KrVwT9m.jpg" alt="Project 2">
+      </div>
+      <div class="project-info">
+        <h3>Urban Photography</h3>
+        <p>Capturing the essence of city life through a unique architectural perspective.</p>
+      </div>
+    </div>
 
-    <footer id="contact">
-        <h2>Contact Me</h2>
-        <p>Email: your.email@example.com</p>
-        <p>LinkedIn: linkedin.com/in/yourprofile</p>
-    </footer>
+    <div class="project-card">
+      <div class="project-media">
+        <video controls>
+          <source src="https://i.imgur.com/DYKrfgs.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="project-info">
+        <h3>Motion Graphics</h3>
+        <p>An engaging animation showcasing smooth transitions and dynamic visual effects.</p>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-media">
+        <img src="https://i.imgur.com/DqpGXUy.jpg" alt="Project 3">
+      </div>
+      <div class="project-info">
+        <h3>Brand Identity</h3>
+        <p>A comprehensive brand development project focusing on visual consistency and impact.</p>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-media">
+        <video controls>
+          <source src="https://i.imgur.com/89j0mvK.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="project-info">
+        <h3>Interactive Experience</h3>
+        <p>A user-centered design approach bringing digital interactions to life.</p>
+      </div>
+    </div>
+
+    <!-- Continue with remaining images and videos in the same pattern -->
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Contact Me</h2>
+    <p>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
+    <p>LinkedIn: <a href="https://linkedin.com/in/yourprofile" target="_blank">linkedin.com/in/yourprofile</a></p>
+  </section>
 </body>
 </html>
