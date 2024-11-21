@@ -19,6 +19,49 @@
             line-height: 1.6;
         }
 
+        #home {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding-top: 80px;
+            text-align: center;
+            position: relative;
+            background-image: url('https://imgur.com/37Nwmku');  /* Replace with your image URL */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;  /* Creates a parallax effect */
+            isolation: isolate;  /* Creates a new stacking context */
+        }
+
+        /* Dark overlay */
+        #home::after {
+            content: '';
+            position: absolute;
+            inset: 0;  /* Same as top: 0; right: 0; bottom: 0; left: 0; */
+            background: linear-gradient(
+                rgba(0, 0, 0, 0.7),
+                rgba(0, 0, 0, 0.8)
+            );
+            z-index: -1;
+        }
+
+        /* Make text more visible */
+        #home h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        #home p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
         /* Navigation */
         .navbar {
             position: fixed;
