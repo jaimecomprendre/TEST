@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
+    <title>Portfolio - Light Designer</title>
     <style>
-        /* Reset and base styles */
         * {
             margin: 0;
             padding: 0;
@@ -13,147 +12,107 @@
         }
 
         body {
-            background-color: #000000;
-            color: #ffffff;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #000;
+            color: #fff;
             line-height: 1.6;
         }
 
-        #home {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding-top: 80px;
-            text-align: center;
-            position: relative;
-            background-image: url('https://imgur.com/37Nwmku.jpg');  /* Replace with your image URL */
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;  /* Creates a parallax effect */
-            isolation: isolate;  /* Creates a new stacking context */
-        }
-
-        /* Dark overlay */
-        #home::after {
-            content: '';
-            position: absolute;
-            inset: 0;  /* Same as top: 0; right: 0; bottom: 0; left: 0; */
-            background: linear-gradient(
-                rgba(0, 0, 0, 0.7),
-                rgba(0, 0, 0, 0.8)
-            );
-            z-index: -1;
-        }
-
-        /* Make text more visible */
-        #home h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        #home p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-        }
-
-        /* Navigation */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            background-color: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(8px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
         .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: flex-start;
-            gap: 3rem;
+            padding: 1rem;
+            text-align: center;
         }
 
         .nav-link {
-            color: #ffffff;
+            color: #fff;
             text-decoration: none;
+            margin: 0 1rem;
             font-weight: 500;
-            transition: color 0.3s ease;
-            font-size: 1rem;
         }
 
         .nav-link:hover {
-            color: #a8a8a8;
+            color: #ccc;
         }
 
-        /* Hero Section */
-        #home {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding-top: 80px;
+        .hero {
             text-align: center;
+            padding: 4rem 1rem;
         }
 
-        h1 {
-            font-size: 3.5rem;
+        .hero h1 {
+            font-size: 3rem;
             margin-bottom: 1rem;
-            font-weight: 700;
         }
 
-        /* Projects Grid */
-        #projects {
-            padding: 4rem 2rem;
+        .section {
             max-width: 1400px;
             margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .projects-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .category-title {
+            font-size: 2rem;
+            margin: 2rem 0;
+            padding-left: 1rem;
+            border-left: 4px solid #ff3e00;
         }
 
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            padding: 2rem 0;
+            padding: 0 1rem;
         }
 
         .project-card {
-            background-color: #111111;
-            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
             overflow: hidden;
-            transition: transform 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
         }
 
-        .project-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .project-media {
-            width: 100%;
+        .gallery-container {
+            position: relative;
             aspect-ratio: 16/9;
             overflow: hidden;
         }
 
-        .project-media img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .gallery {
+            display: flex;
+            transition: transform 0.3s ease;
         }
 
-        .project-media video {
+        .gallery img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .gallery-nav {
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .gallery-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+        }
+
+        .gallery-dot.active {
+            background: #fff;
         }
 
         .project-info {
@@ -161,259 +120,114 @@
         }
 
         .project-info h3 {
-            font-size: 1.25rem;
+            font-size: 1.5rem;
             margin-bottom: 0.5rem;
-            color: #ffffff;
         }
 
         .project-info p {
-            color: #a8a8a8;
-            font-size: 0.9rem;
+            color: #ccc;
         }
 
-        /* Contact Section */
         #contact {
-            padding: 4rem 2rem;
             text-align: center;
-            background-color: #111111;
+            padding: 4rem 1rem;
         }
 
-        #contact h2 {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-        }
-
-        #contact a {
-            color: #ffffff;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        #contact a:hover {
-            color: #a8a8a8;
-        }
-
-        /* Responsive Design */
         @media (max-width: 768px) {
             .projects-grid {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            }
-
-            h1 {
-                font-size: 2.5rem;
-            }
-
-            .nav-container {
-                padding: 1rem;
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="#home" class="nav-link">Home</a>
-            <a href="#projects" class="nav-link">Projects</a>
-            <a href="#contact" class="nav-link">Contact</a>
-        </div>
+    <nav class="nav-container">
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#contact" class="nav-link">Contact</a>
     </nav>
 
-  <section id="home" class="hero">
-    <h1>Hubert Maxime</h1>
-    <p>Light Designer/ Technician</p>
-  </section>
+    <section id="home" class="hero">
+        <h1>Hubert Maxime</h1>
+        <p>Light Designer / Technician</p>
+    </section>
 
-  <section id="projects" class="projects-grid">
-    <h1 style="text-align: center;">Projects</h1>
-    <h2 style="text-align: left;">SBCS</h2>
-    <div class="project-card">
-        <div class="project-info">
-          <h3>TOSS 2022</h3>
-          <p>A stunning visual exploration showcasing innovative design principles and creative thinking.</p>
-        </div>
-        <div class="project-gallery">
-          <div class="project-media">
-            <img src="https://i.imgur.com/hCxENDE.jpg" alt="Creative Design Visual 1">
-          </div>
-          <div class="project-media">
-            <img src="https://i.imgur.com/KrVwT9m.jpg" alt="Creative Design Visual 2">
-          </div>
-          <div class="project-media">
-            <img src="https://imgur.com/DqpGXUy.jpg" alt="Creative Design Visual 3"> 
-          </div>
-        </div>
-      </div>
+    <section id="projects" class="section">
+        <h1 class="projects-header">Projects</h1>
 
-    <div class="project-card">
-        <div class="project-media">
-          <img src="https://imgur.com/o4I5eSP.jpg" alt="Project 2">
+        <div class="category">
+            <h2 class="category-title">SBCS</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="gallery-container">
+                        <div class="gallery" id="toss-gallery">
+                            <img src="https://i.imgur.com/hCxENDE.jpg" alt="TOSS 2022 - 1">
+                            <img src="https://i.imgur.com/KrVwT9m.jpg" alt="TOSS 2022 - 2">
+                            <img src="https://imgur.com/DqpGXUy.jpg" alt="TOSS 2022 - 3">
+                        </div>
+                        <div class="gallery-nav" id="toss-nav"></div>
+                    </div>
+                    <div class="project-info">
+                        <h3>TOSS 2022</h3>
+                        <p>A stunning visual exploration showcasing innovative design principles and creative thinking.</p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="project-info">
-          <h3>Urban Photography</h3>
-          <p>Capturing the essence of city life through a unique architectural perspective.</p>
-        </div>
-    </div>
 
-    <div class="project-card">
-        <div class="project-media">
-          <img src="https://imgur.com/MIffIxc.jpg" alt="Project 2">
+        <div class="category">
+            <h2 class="category-title">Urban Photography</h2>
+            <div class="projects-grid">
+                <!-- Repeat project-card structure for other projects -->
+            </div>
         </div>
-        <div class="project-info">
-          <h3>Urban Photography</h3>
-          <p>Capturing the essence of city life through a unique architectural perspective.</p>
-        </div>
-    </div>
+    </section>
 
-    <div class="project-card">
-        <div class="project-media">
-          <img src="https://imgur.com/QfjIola.jpg" alt="Project 2">
-        </div>
-        <div class="project-info">
-          <h3>Urban Photography</h3>
-          <p>Capturing the essence of city life through a unique architectural perspective.</p>
-        </div>
-    </div>
+    <section id="contact" class="section">
+        <h2>Contact Me</h2>
+        <p>Email: your.email@example.com</p>
+        <p>LinkedIn: <a href="https://linkedin.com/in/yourprofile" target="_blank">linkedin.com/in/yourprofile</a></p>
+    </section>
 
-    <div class="project-card">
-        <div class="project-media">
-          <img src="https://imgur.com/D8YA2tv.jpg" alt="Project 2">
-        </div>
-        <div class="project-info">
-          <h3>Urban Photography</h3>
-          <p>Capturing the essence of city life through a unique architectural perspective.</p>
-        </div>
-    </div>
+    <script>
+        // Simple gallery functionality
+        function initGallery(galleryId, images) {
+            const gallery = document.getElementById(galleryId);
+            const nav = document.getElementById(galleryId + '-nav');
+            let currentIndex = 0;
 
-    <div class="project-card">
-        <div class="project-media">
-          <img src="https://imgur.com/J27QlSW.jpg" alt="Project 2">
-        </div>
-        <div class="project-info">
-          <h3>Urban Photography</h3>
-          <p>Capturing the essence of city life through a unique architectural perspective.</p>
-        </div>
-    </div>
+            // Create navigation dots
+            images.forEach((_, index) => {
+                const dot = document.createElement('div');
+                dot.className = `gallery-dot ${index === 0 ? 'active' : ''}`;
+                dot.addEventListener('click', () => {
+                    currentIndex = index;
+                    updateGallery();
+                });
+                nav.appendChild(dot);
+            });
 
-    <div class="project-card">
-        <div class="project-media">
-            <img src="https://lh3.googleusercontent.com/d/1bZgP3Q3IZtsZ1Jd2AwyH5qa9wzMp6lil" alt="Your image description">
-        </div>
-        <div class="project-info">
-          <h3>Urban Photography</h3>
-          <p>Capturing the essence of city life through a unique architectural perspective.</p>
-        </div>
-    </div>
+            function updateGallery() {
+                gallery.style.transform = `translateX(-${currentIndex * 100}%)`;
+                const dots = nav.getElementsByClassName('gallery-dot');
+                Array.from(dots).forEach((dot, index) => {
+                    dot.className = `gallery-dot ${index === currentIndex ? 'active' : ''}`;
+                });
+            }
 
-    <div class="project-card">
-        <div class="project-media">
-          <img src="https://imgur.com/W8vIYCE.jpg" alt="Project 2">
-        </div>
-        <div class="project-info">
-          <h3>Urban Photography</h3>
-          <p>Capturing the essence of city life through a unique architectural perspective.</p>
-        </div>
-    </div>
+            // Auto advance gallery
+            setInterval(() => {
+                currentIndex = (currentIndex + 1) % images.length;
+                updateGallery();
+            }, 5000);
+        }
 
-    <h1>Studio Apelbaum</h1>
-
-    <div class="project-card">
-      <div class="project-media">
-        <video controls>
-          <source src="https://i.imgur.com/DYKrfgs.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
-      <div class="project-info">
-        <h3>Motion Graphics</h3>
-        <p>An engaging animation showcasing smooth transitions and dynamic visual effects.</p>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <div class="project-media">
-        <video controls>
-          <source src="https://i.imgur.com/89j0mvK.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
-      <div class="project-info">
-        <h3>Interactive Experience</h3>
-        <p>A user-centered design approach bringing digital interactions to life.</p>
-      </div>
-    </div>
-
-    <div class="project-card">
-        <div class="project-media">
-          <video controls>
-            <source src="https://imgur.com/EmF1MTM.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-        </div>
-        <div class="project-info">
-          <h3>Motion Graphics</h3>
-          <p>An engaging animation showcasing smooth transitions and dynamic visual effects.</p>
-        </div>
-      </div>
-  
-    <div class="project-card">
-        <div class="project-media">
-          <video controls>
-            <source src="https://imgur.com/pEx0Jls.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-        </div>
-        <div class="project-info">
-          <h3>Interactive Experience</h3>
-          <p>A user-centered design approach bringing digital interactions to life.</p>
-        </div>
-    </div>
-
-    <div class="project-card">
-        <div class="project-media">
-          <video controls>
-            <source src="https://imgur.com/O1VIntm.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-        </div>
-        <div class="project-info">
-          <h3>Motion Graphics</h3>
-          <p>An engaging animation showcasing smooth transitions and dynamic visual effects.</p>
-        </div>
-    </div>
-  
-    <div class="project-card">
-        <div class="project-media">
-          <video controls>
-            <source src="https://imgur.com/EYmQuJj.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-        </div>
-        <div class="project-info">
-          <h3>Interactive Experience</h3>
-          <p>A user-centered design approach bringing digital interactions to life.</p>
-        </div>
-    </div>
-
-    <div class="project-card">
-        <div class="project-media">
-          <video controls>
-            <source src="https://imgur.com/LEw4Ort.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-        </div>
-        <div class="project-info">
-          <h3>Interactive Experience</h3>
-          <p>A user-centered design approach bringing digital interactions to life.</p>
-        </div>
-    </div>
-
-    <!-- Continue with remaining images and videos in the same pattern -->
-  </section>
-
-  <section id="contact" class="contact">
-    <h2>Contact Me</h2>
-    <p>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
-    <p>LinkedIn: <a href="https://linkedin.com/in/yourprofile" target="_blank">linkedin.com/in/yourprofile</a></p>
-  </section>
+        // Initialize galleries
+        initGallery('toss-gallery', [
+            'https://i.imgur.com/hCxENDE.jpg',
+            'https://i.imgur.com/KrVwT9m.jpg',
+            'https://imgur.com/DqpGXUy.jpg'
+        ]);
+    </script>
 </body>
 </html>
